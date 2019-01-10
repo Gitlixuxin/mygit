@@ -59,9 +59,9 @@ public class employee {
 		
 		}
 		if(count==1) {
-			System.out.println("×¢²á³É¹¦£¡");
+			System.out.println("¹§Ï²£¬×¢²á³É¹¦£¡");
 		}else {
-			System.out.println("×¢²áÊ§°Ü£¡");
+			System.out.println("ºÜÒÅº¶£¬×¢²áÊ§°Ü£¡");
 		}
 	}
 
