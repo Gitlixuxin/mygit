@@ -1,9 +1,7 @@
 package com.lxx.Jdbc;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,18 +25,20 @@ public class employee2 {
 			String password = properties.getProperty("password");
 			Class.forName(driver);
 			conn=DriverManager.getConnection(url, user, password);
-			String sqlsel="select * from employee where id=?";
+			conn.setAutoCommit(false);
+			String sqlsel="select * from employee where id=? for update";
 			ps=conn.prepareStatement(sqlsel);
 			ps.setInt(1, 3);
 			rs=ps.executeQuery();
+			conn.commit();
 			while(rs.next()) {
 				String name = rs.getString("name");
 				int id = rs.getInt("id");
 				String pwd = rs.getString("pwd");
 				System.out.println(id+name+pwd);
 			}
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		} catch (Exception e) {
+			conn.rollback();
 		}finally {
 			if(rs!=null) {
 				rs.close();
