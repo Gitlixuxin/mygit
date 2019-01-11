@@ -33,11 +33,21 @@ public class employee {
 		String user = properties.getProperty("user");
 			Class.forName(driver);
 			conn=DriverManager.getConnection(url, user, password);
+			//开启事务
+			conn.setAutoCommit(false);
 			stmt=conn.createStatement();
 			String sql="insert into employee(name,pwd) value('"+name+"','"+pwd+"')";
 			count=stmt.executeUpdate(sql);
+			//提交事务
+			conn.commit();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			//回滚事务
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			e.printStackTrace();
 		}finally {
 			if(stmt!=null) {
