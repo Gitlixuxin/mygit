@@ -15,7 +15,7 @@ public class employee2 {
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		try {
-			FileReader reader=new FileReader("conf/server.properties");
+			FileReader reader=new FileReader("conf/server.properties");//字符流
 			Properties properties=new Properties();
 			properties.load(reader);
 			reader.close();
@@ -38,7 +38,11 @@ public class employee2 {
 				System.out.println(id+name+pwd);
 			}
 		} catch (Exception e) {
-			conn.rollback();
+			if(conn!=null) {
+				conn.rollback();
+			}else {
+				System.out.println("连接数据库失败！");
+			}
 		}finally {
 			if(rs!=null) {
 				rs.close();

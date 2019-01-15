@@ -25,14 +25,22 @@ public class employee3 {
 			conn.setAutoCommit(false);
 			String sql="update employee set pwd=? where id=?";
 			ps=conn.prepareStatement(sql);
-			ps.setString(1, "lxx123");
+			String myselfpwd="4";
+			if(myselfpwd.length()<5) {
+				throw new MyException();
+			}
+			ps.setString(1, myselfpwd);
 			ps.setInt(2, 3);
 			int count=ps.executeUpdate();
 			conn.commit();
 			System.out.println("count="+count);
 		} catch (Exception e) {
 			try {
-				conn.rollback();
+				if(conn!=null) {
+					conn.rollback();
+				}else {
+					System.out.println("连接数据库失败！");
+				}
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
