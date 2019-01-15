@@ -46,7 +46,7 @@ public class reflection {
 			for(Field f:fields) {
 				System.out.println(f);
 			}
-			System.out.println("**************所有属性*************");
+			System.out.println("**************所有字段*************");
 			Field[] declareFields = stu3Class.getDeclaredFields();
 			for(Field f:declareFields) {
 				System.out.println(f);
@@ -58,7 +58,7 @@ public class reflection {
 			name.set(obj, "李虚心");
 			Student s=(Student)obj;
 			System.out.println(s.name);
-			System.out.println("**************私有的构造方法*************");
+			System.out.println("**************调用私有的字段*************");
 			Field phoneNum = stu3Class.getDeclaredField("phoneNum");
 			System.out.println(phoneNum);
 			phoneNum.setAccessible(true);//称之为暴力获取，忽略访问修饰符。
