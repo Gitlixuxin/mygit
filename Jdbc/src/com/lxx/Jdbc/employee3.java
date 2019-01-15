@@ -39,7 +39,7 @@ public class employee3 {
 				if(conn!=null) {
 					conn.rollback();
 				}else {
-					System.out.println("数据库连接失败！");
+					System.out.println("鏁版嵁搴撹繛鎺ュけ璐ワ紒");
 				}
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
