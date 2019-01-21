@@ -10,19 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/logoutServlet")
 public class logoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("销毁当前session"+request.getSession().getId());
-		if(request.getSession()!=null) {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		System.out.println("销毁当前session" + request.getSession().getId());
+		if (request.getSession() != null) {
 			request.getSession().invalidate();
 		}
 		String path = request.getContextPath();
-		response.sendRedirect(path+"/login.jsp");
-		
+		response.sendRedirect(path + "/login.jsp");
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

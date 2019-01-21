@@ -12,9 +12,8 @@ import javax.servlet.http.HttpSessionListener;
 @WebListener
 public class onlineCountNum implements HttpSessionListener {
 
-   
-    public void sessionCreated(HttpSessionEvent arg0)  { 
-    	 System.out.println("MyServletRequestListener.....requestInitialized....");
+	public void sessionCreated(HttpSessionEvent arg0) {
+		System.out.println("MyServletRequestListener.....requestInitialized....");
 //    	 Timer timers = new Timer();
 //    	 timers.schedule(new TimerTask() {
 //			
@@ -24,19 +23,19 @@ public class onlineCountNum implements HttpSessionListener {
 //				System.out.println(new Date().toString());//Sat Jan 19 17:24:09 CST 2019
 //			}
 //		},0, 1000);
-    	 ServletContext application = arg0.getSession().getServletContext();
-    	 Integer count = (Integer)application.getAttribute("nums");
-    	 count++;
-    	 application.setAttribute("nums", count);
-    }
+		ServletContext application = arg0.getSession().getServletContext();
+		Integer count = (Integer) application.getAttribute("nums");
+		count++;
+		application.setAttribute("nums", count);
+	}
 
-    public void sessionDestroyed(HttpSessionEvent arg0)  { 
-    	System.out.println("MyServletRequestListener.....requestDestroyed....");
-    	ServletContext application = arg0.getSession().getServletContext();
-	   	 Integer count = (Integer)application.getAttribute("nums");
-	   	 count--;
-	   	 System.out.println("销毁后还有："+count);
-	   	 application.setAttribute("nums", count);
-    }
-	
+	public void sessionDestroyed(HttpSessionEvent arg0) {
+		System.out.println("MyServletRequestListener.....requestDestroyed....");
+		ServletContext application = arg0.getSession().getServletContext();
+		Integer count = (Integer) application.getAttribute("nums");
+		count--;
+		System.out.println("销毁后还有：" + count);
+		application.setAttribute("nums", count);
+	}
+
 }

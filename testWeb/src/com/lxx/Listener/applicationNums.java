@@ -8,15 +8,15 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class applicationNums implements ServletContextListener {
 
-    public applicationNums() {
-    }
+	public applicationNums() {
+	}
 
-    public void contextDestroyed(ServletContextEvent sce)  { 
-    }
+	public void contextDestroyed(ServletContextEvent sce) {
+	}
 
-    public void contextInitialized(ServletContextEvent sce)  { 
-    	ServletContext servletContext = sce.getServletContext();
-    	servletContext.setAttribute("nums", 0);
-    }
-	
+	public void contextInitialized(ServletContextEvent sce) {
+		ServletContext servletContext = sce.getServletContext();
+		servletContext.setAttribute("nums", 0);
+	}
+
 }
