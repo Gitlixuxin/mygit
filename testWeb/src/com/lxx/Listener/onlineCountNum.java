@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSessionListener;
 public class onlineCountNum implements HttpSessionListener {
 
 	public void sessionCreated(HttpSessionEvent arg0) {
-		System.out.println("MyServletRequestListener.....requestInitialized....");
 //    	 Timer timers = new Timer();
 //    	 timers.schedule(new TimerTask() {
 //			
@@ -23,6 +22,7 @@ public class onlineCountNum implements HttpSessionListener {
 //				System.out.println(new Date().toString());//Sat Jan 19 17:24:09 CST 2019
 //			}
 //		},0, 1000);
+		System.out.println("创建了session"+arg0.getSession().getId());
 		ServletContext application = arg0.getSession().getServletContext();
 		Integer count = (Integer) application.getAttribute("nums");
 		count++;
@@ -30,7 +30,6 @@ public class onlineCountNum implements HttpSessionListener {
 	}
 
 	public void sessionDestroyed(HttpSessionEvent arg0) {
-		System.out.println("MyServletRequestListener.....requestDestroyed....");
 		ServletContext application = arg0.getSession().getServletContext();
 		Integer count = (Integer) application.getAttribute("nums");
 		count--;

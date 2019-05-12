@@ -13,8 +13,8 @@ public class logoutServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("销毁当前session" + request.getSession().getId());
-		if (request.getSession() != null) {
+		System.out.println("销毁当前session" + request.getSession(false).getId());
+		if (request.getSession(false) != null) {
 			request.getSession().invalidate();
 		}
 		String path = request.getContextPath();

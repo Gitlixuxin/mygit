@@ -31,7 +31,7 @@ public class loginServlet extends HttpServlet {
 		String remember = request.getParameter("remember");
 		String rememberAndauto = request.getParameter("rememberAndauto");
 		String path = request.getContextPath();
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		if (userName == null || "".equals(userName)) {
 			request.setAttribute("msg", "用户名不能为空！");
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
@@ -42,7 +42,7 @@ public class loginServlet extends HttpServlet {
 			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			return;
 		}else {
-			if (!userName.equals(session.getAttribute("user"))) {
+			if (session==null||!userName.equals(session.getAttribute("user"))) {
 //					session.invalidate();
 				session.setAttribute("user", userName);
 				if("on".equals(rememberAndauto)) {
