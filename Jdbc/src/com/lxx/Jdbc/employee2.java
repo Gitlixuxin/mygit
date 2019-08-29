@@ -26,7 +26,7 @@ public class employee2 {
 			Class.forName(driver);
 			conn=DriverManager.getConnection(url, user, password);
 			conn.setAutoCommit(false);
-			String sqlsel="select * from employee where id=? for update";
+			String sqlsel="select * from employee where id=? for update";//±¯¹ÛËø
 			ps=conn.prepareStatement(sqlsel);
 			ps.setInt(1, 3);
 			rs=ps.executeQuery();
