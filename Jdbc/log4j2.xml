@@ -14,9 +14,9 @@
 
   <Loggers>
 
-    <Logger name="com.lxx.Jdbc.MyException" level="INFO"/>
+    <Logger name="com.lxx.Jdbc.employee" level="DEBUG"/>
 
-    <Root level="error">
+    <Root level="DEBUG">
 
       <AppenderRef ref="Console"/>
 
