@@ -25,7 +25,7 @@ public class employee3 {
 			conn.setAutoCommit(false);
 			String sql="update employee set pwd=? where id=?";
 			ps=conn.prepareStatement(sql);
-			String myselfpwd="4";
+			String myselfpwd="454664664656";
 			if(myselfpwd.length()<5) {
 				throw new MyException();
 			}
